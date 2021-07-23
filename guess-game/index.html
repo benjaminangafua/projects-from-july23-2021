@@ -6,18 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess-Game</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Get input from user -->
-    <input type="text" placeholder="GUESS-A-NUMBER">
-    <input type="button" value="CHECK-GUESS">
+    <div id="container">
+        <div class="title">GUESS GAME</div>
+        <!-- Get input from user -->
+        <input type="text" onkeypress="return VALIDATEINPUT(event)" placeholder="GUESS-A-NUMBER" autofocus title="Only number" maxlength="3">
+        <input type="button" value="CHECK-GUESS">
 
-    <!-- Display user guess -->
-    <div>Your guesses: <span></span></div>
-    <script type="text/javascript" src="./script.js">
-    </script>
+        <!-- guess status display-->
+        <div>You answer <span class="guess-status"></span></div>
+        <!-- Display user guess -->
+        <div>Your guesses: <span class="ur-guess"></span></div>
+        <script type="text/javascript" src="./script.js">
+        </script>
+    </div>
 </body>
 
 </html>
