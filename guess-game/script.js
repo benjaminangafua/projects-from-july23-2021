@@ -7,31 +7,34 @@ let chances_to_guess = 10;
 let submit_btn = document.querySelector("input[type=button]");
 
 const CheckValue = () => {
-    // Decrement chances
-    chances_to_guess--;
-    QUITGAME(chances_to_guess)
+        // Decrement chances
+        chances_to_guess--;
+        QUITGAME(chances_to_guess)
 
-    //Display each guess
-    let input_value = Number(INPUT_FROM_USER.value);
-    DISPLAY_USER_GUESS(input_value);
+        //Display each guess
+        let input_value = Number(INPUT_FROM_USER.value);
+        DISPLAY_USER_GUESS(input_value);
 
-    //Validate input
-    const VALIDATEINPUT = (e) => {
-        let event = e || window.event;
-        let charCode = event.which || event.keyCode;
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-            return false;
-        }
-        return true;
+        //Display guess values
+        DISPLAY_RESULT(input_value, INPUT_FROM_USER, RANDOM_NUM)
     }
-
-    //Display guess values
-    DISPLAY_RESULT(input_value, INPUT_FROM_USER, RANDOM_NUM)
+    //Validate input
+const VALIDATEINPUT = (e) => {
+    let event = e || window.event;
+    let charCode = event.which || event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
 }
 submit_btn.addEventListener("click", CheckValue);
-const QUITGAME = (chance_counter) => { if (chance_counter < 1) INPUT_FROM_USER.disabled = true; }
-const DISPLAY_USER_GUESS = (input) => { document.querySelector(".ur-guess").innerHTML += input + ", "; }
 
+//end game
+const QUITGAME = (chance_counter) => { if (chance_counter < 1) INPUT_FROM_USER.disabled = true; }
+
+//Show user guess enter
+const DISPLAY_USER_GUESS = (input) => { document.querySelector(".ur-guess").innerHTML += input + ", "; }
+    //
 const DISPLAY_RESULT = (input, USER_INPUT, random_num) => {
     const RESULT_CHECKER = document.querySelector(".guess-status");
     if (input == random_num) {
